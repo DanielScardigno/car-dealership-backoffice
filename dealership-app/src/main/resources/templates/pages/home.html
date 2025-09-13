@@ -11,17 +11,22 @@
     <main>
         <h1 class="text-center mt-5">Find Your Car!</h1>
 
-        <div class="container mt-5">
+        <div class="text-center my-5">
+            <a class="btn btn-primary btn-lg" th:href="@{/cars}">Go to car list</a>
+        </div>
 
-            <div class="row justify-content-between">
-                <div class="col-2" th:each="car : ${cars}" th:object="${car}">
+        <h1 class="text-center py-5">Recently added</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2 mb-4" th:each="car : ${cars}" th:object="${car}">
                     <div class="card">
                         <img th:src="*{imageUrl}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">[[*{brand}]] [[*{carModel}]]</h5>
                             <div class="card-text fw-medium">[[*{price}]] €</div>
                             <div class="card-text">[[*{mileage}]] Km</div>
-                            <a href="#" class="btn btn-primary mt-3">View</a>
+                            <a th:href="@{|/cars/*{id}|}" class="btn btn-primary mt-3">View</a>
                         </div>
                     </div>
                 </div>

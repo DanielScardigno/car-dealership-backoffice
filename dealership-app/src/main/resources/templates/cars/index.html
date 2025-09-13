@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head(Cars)}"></head>
+
+<body>
+    <header>
+        <nav th:replace="~{fragments/navBar :: navBar}"></nav>
+    </header>
+
+    <main>
+        <div class="container mt-5 pt-5">
+
+            <div class="row mx-auto col-10">
+                <div class="mb-4 border border rounded p-0" th:each="car : ${cars}" th:object="${car}">
+                    <div class="d-flex">
+                        <div class="col-3">
+                            <img th:src="*{imageUrl}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="col-3 ms-4">
+                            <h4 class="mt-2">[[*{brand}]] [[*{carModel}]]</h4>
+                            <p class="fw-medium fs-5">[[*{price}]] €</p>
+                            <p class="fw-medium">Mileage: [[*{mileage}]] km</p>
+                            <p class="fw-medium">Year: [[*{year}]] km</p>
+                        </div>
+                        <div class="col-3 ms-4">
+                            <p class="text-secondary mt-2">[[*{description}]]</p>
+                        </div>
+                        <div class="mt-auto ms-auto pb-3 pe-4">
+                            <a class="btn btn-primary" th:href="@{|/cars/*{id}|}">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Popper Js -->
+    <script th:replace="~{fragments/popperJs :: popperJs}"></script>
+</body>
+
+</html>

@@ -80,6 +80,18 @@
                     </div>
                 </div>
     
+                <!-- Description -->
+                <div class="col-12">
+                    <label for="description" class="form-label mt-4">Description</label>
+                    <textarea rows="4" id="description" class="form-control" th:field="*{description}" placeholder="Insert description" th:errorClass="is-invalid"></textarea>
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('description')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+    
                 <!-- Image URL -->
                 <div class="col-12">
                     <label for="imageUrl" class="form-label mt-4">Image URL</label>

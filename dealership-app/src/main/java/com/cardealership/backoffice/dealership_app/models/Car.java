@@ -36,6 +36,10 @@ public class Car {
     @NotNull(message = "Required field")
     private Integer mileage;
 
+    @NotBlank(message = "Required field")
+    @Lob
+    private String description;
+
     // getters and setters
 
     public Integer getId() {
@@ -92,5 +96,13 @@ public class Car {
 
     public void setMileage(Integer mileage) {
         this.mileage = mileage;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
