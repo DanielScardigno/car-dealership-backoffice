@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head('Add a car')}"></head>
+
+<body>
+    <header>
+        <nav th:replace="~{fragments/navBar :: navBar}"></nav>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <h1 class="text-center mt-5">Add a Car!</h1>
+    
+            <form class="col-8 mx-auto row" th:action="@{/cars/create}" method="post" th:object="${car}">
+    
+                <!-- Brand -->
+                <div class="col-4">
+                    <label for="brand" class="form-label mt-4">Brand</label>
+                    <input type="text" id="brand" class="form-control" th:field="*{brand}" placeholder="Insert brand"
+                        th:errorClass="is-invalid">
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('brand')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('brand')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Model -->
+                <div class="col-4">
+                    <label for="carModel" class="form-label mt-4">Model</label>
+                    <input type="text" id="carModel" class="form-control" th:field="*{carModel}" placeholder="Insert model"
+                        th:errorClass="is-invalid">
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('carModel')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('carModel')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Year -->
+                <div class="col-4">
+                    <label for="year" class="form-label mt-4">Year</label>
+                    <input type="number" id="year" class="form-control" th:field="*{year}" placeholder="Insert year"
+                        th:errorClass="is-invalid">
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('year')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('year')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Mileage -->
+                <div class="col-6">
+                    <label for="mileage" class="form-label mt-4">Mileage</label>
+                    <input type="number" id="mileage" class="form-control" th:field="*{mileage}" placeholder="Insert mileage"
+                        th:errorClass="is-invalid">
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('mileage')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('mileage')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Price -->
+                <div class="col-6">
+                    <label for="price" class="form-label mt-4">Price</label>
+                    <input type="number" id="price" class="form-control" th:field="*{price}" placeholder="Insert price"
+                        th:errorClass="is-invalid">
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('price')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Image URL -->
+                <div class="col-12">
+                    <label for="imageUrl" class="form-label mt-4">Image URL</label>
+                    <input type="text" id="imageUrl" class="form-control" th:field="*{imageUrl}" placeholder="Insert imageUrl"
+                        th:errorClass="is-invalid">
+                    <!-- Error -->
+                    <div th:if="${#fields.hasErrors('imageUrl')}" class="invalid-feedback fs-6">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('imageUrl')}">[[${err}]]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-lg col-2 mx-auto mt-5" type="submit">Create</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Popper Js -->
+    <script th:replace="~{fragments/popperJs :: popperJs}"></script>
+</body>
+
+</html>
