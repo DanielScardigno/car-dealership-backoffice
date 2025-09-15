@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="https://www.thymeleaf.org">
 
-<head th:replace="~{fragments/head :: head(Home)}"></head>
+<head th:replace="~{fragments/head :: head('Car details')}"></head>
 
 <body>
     <header>
@@ -9,10 +9,20 @@
     </header>
 
     <main>
-        <h1 class="text-center mt-5">Find Your Car!</h1>
+        <div class="container mt-5" th:object="${car}">
+            <div class="row col-10 mx-auto">
+                <img th:src="*{imageUrl}" class="col-8" alt="...">
 
-        <div class="text-center my-5">
-            <a class="btn btn-primary btn-lg" th:href="@{/cars}">Go to car list</a>
+                <div class="card col-4 mx-auto">
+                    <div class="card-body">
+                        <h2 class="mt-2">[[*{brand}]] [[*{carModel}]]</h2>
+                        <p class="fw-medium fs-3">[[*{price}]] €</p>
+                        <p class="fw-medium">Mileage: [[*{mileage}]] km</p>
+                        <p class="fw-medium">Year: [[*{year}]] km</p>
+                        <p class="mt-4">[[*{description}]]</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <h2 class="text-center pt-5 pb-4">Recently added</h2>
@@ -32,6 +42,7 @@
                 </div>
             </div>
         </div>
+
 
 
     </main>
